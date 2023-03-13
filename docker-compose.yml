@@ -12,6 +12,7 @@ services:
       - ./:/app
       - $HOME/.phive:/home/application/.phive
       - $HOME/.ssh:/home/application/.ssh
+      - $HOME/.gitconfig:/home/application/.gitconfig
       - ${SSH_AUTH_SOCK:-/ssh-agent}:/ssh-agent # Forward local machine SSH key to docker
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
