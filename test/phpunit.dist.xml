@@ -15,8 +15,12 @@
   ~ limitations under the License.
   ~
   -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" bootstrap="./../vendor/autoload.php"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         colors="true"
+         bootstrap="./../vendor/autoload.php"
+         cacheDirectory="../.cache/phpunit"
+>
   <coverage>
     <include>
       <directory suffix=".php">./../src</directory>
