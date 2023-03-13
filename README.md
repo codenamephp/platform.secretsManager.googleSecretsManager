@@ -10,6 +10,25 @@
 
 ## Installation
 
-Easiest way is via composer. Just run `composer require codenamephp/platform.secretsManager.googleSecretsManager` in your cli which should install the latest version for you.
+Easiest way is via composer. Just run `composer require codenamephp/platform.secretsManager.googleSecretsManager` in your cli which should install the latest
+version for you.
 
 ## Usage
+
+Just create a client using the factory and start fetching secrets. Note that you need to have a google authentication setup. Since we just
+use the google client by default the instructions from Google apply: https://github.com/googleapis/google-cloud-php/blob/main/AUTHENTICATION.md
+
+You can also pass the path to the credentials file to the factory if you so prefer. Whatever string you pass to the factory is just
+passed on to the google client so it can do its thing. So check the google doc for details.
+
+```php
+
+use de\codenamephp\platform\secretsManager\googleSecretsManager\Client\Factory\WithGoogleSecretsManagerClient;
+
+$client = (new WithGoogleSecretsManagerClient())->build();
+$client = (new WithGoogleSecretsManagerClient())->build('/path/to/credentials.json');
+
+// payload is fetched as string
+$payload = $client->fetchPayload(new \de\codenamephp\platform\secretsManager\base\Secret\Sealed('mySecret', 'myProject')); //fetch the latest version
+$payload = $client->fetchPayload(new \de\codenamephp\platform\secretsManager\base\Secret\Sealed('mySecret', 'myProject', '3')); //fetch a specific version
+```
