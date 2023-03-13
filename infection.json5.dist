@@ -13,6 +13,6 @@
         "text": ".logs/infection.log"
     },
     "mutators": {
-        "@default": true
+        "@default": true,
     }
 }
